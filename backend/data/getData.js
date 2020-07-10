@@ -2,17 +2,13 @@ const axios = require('axios');
 const url = require('./url');
 const bkSort = require('../sort/bk-sort');
 
-function getData() {
-  return axios.get(url).then(res => {
-    const data = res.data;
-    const sanitizedData = sanitizeData(data);
-    if (sanitizedData[0].f2 === '-') return;
-
-    const sortedData = addBk(sanitizedData);
-    const result = formData(sortedData);
-
-    return result;
-  });
+async function getData() {
+  const response = await axios.get(url);
+  const data = response.data;
+  const sanitizedData = sanitizeData(data);
+  if (sanitizedData[0].f2 === '-') return;
+  const sortedData = addBk(sanitizedData);
+  return formData(sortedData);
 }
 
 function sanitizeData(data) {

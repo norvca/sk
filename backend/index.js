@@ -15,9 +15,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  freshData();
-  res.json('Data Updated!');
+app.get('/', async (req, res) => {
+  const result = await freshData();
+  res.json(result);
 });
 
 app.listen(3000);
