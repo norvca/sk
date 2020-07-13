@@ -10,16 +10,35 @@ const header = document.querySelector('header');
 const stockBox = document.querySelector('tbody');
 const bkSonBox = document.querySelector('.bk-son-box');
 
+var autoFetchID;
+var autoFetchAllID;
+
 fetchGenralData();
+autoFetchGenralData();
+
+function autoFetchData() {
+  clearInterval(autoFetchAllID);
+  clearInterval(autoFetchID);
+
+  autoFetchID = window.setInterval(fetchData, getRandomTime());
+}
+
+function autoFetchGenralData() {
+  clearInterval(autoFetchAllID);
+  clearInterval(autoFetchID);
+
+  autoFetchAllID = window.setInterval(fetchGenralData, getRandomTime());
+}
 
 // 每隔 N 秒自动更新数据
-// setInterval(fetchData, getRandomTime());
-
-// function getRandomTime() {
-//   return Math.random() * 3000 + 2000;
-// }
+function getRandomTime() {
+  return Math.random() * 3000 + 4000;
+}
 
 function fetchData() {
+  const xBk = document.querySelector('.x-bk');
+  xBk.classList.add('dn');
+
   axios
     .get(url)
     .then(response => {
@@ -35,11 +54,17 @@ function fetchData() {
       const result = template(sortedArr);
 
       stockBox.innerHTML = result;
+
+      const xBk = document.querySelectorAll('.x-bk');
+      Array.from(xBk).forEach(e => e.classList.add('dn'));
     })
     .catch(err => console.log(err));
 }
 
 function fetchGenralData() {
+  const xBk = document.querySelector('.x-bk');
+  xBk.classList.remove('dn');
+
   axios
     .get(url)
     .then(response => {
@@ -57,10 +82,12 @@ header.addEventListener('click', e => {
 
   if (target.getAttribute('id') === 'bk-all') {
     bkSonBox.classList.remove('bt');
+    autoFetchGenralData();
     return fetchGenralData();
   }
 
   if (target.tagName.toLowerCase() === 'a') {
     fetchData();
+    autoFetchData();
   }
 });

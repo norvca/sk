@@ -9,6 +9,13 @@ function template(arr) {
             <td class="pv2  bt br b--black-20 mid-gray">${
               arr.indexOf(e) + 1
             }</td>
+
+            ${
+              e.bk
+                ? `<td class="x-bk pv2  bt br b--black-20 mid-gray">${e.bk}</td>`
+                : `<td class="x-bk pv2  bt br b--black-20 mid-gray">-</td>`
+            }
+            
             ${
               area == 0
                 ? `<td class="pv2  bt br b--black-20 mid-gray"><a target="_blank" class="no-underline blue" href="https://xueqiu.com/S/SZ${stockCode}">${e.f14}</a></td>`
