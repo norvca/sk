@@ -8,6 +8,7 @@ headerInit();
 
 bkMonBox.addEventListener('click', e => {
   if (e.target.classList.contains('bk-mon')) {
+    bkSonBox.classList.add('bt');
     allBkMon.forEach(e => e.classList.remove('bg-lightest-blue'));
     allBkSon.forEach(e => e.classList.add('dn'));
     e.target.classList.add('bg-lightest-blue');
@@ -30,6 +31,7 @@ bkSonBox.addEventListener('click', e => {
 
 function headerInit() {
   allBkSon.forEach(e => e.classList.add('dn'));
-  allBkSon[0].classList.remove('dn');
-  allBkSon[0].children[0].classList.add('bg-lightest-blue');
+  bkSonBox.classList.remove('bt');
+
+  // allBkSon[0].classList.remove('dn');
 }
