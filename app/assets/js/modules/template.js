@@ -1,6 +1,6 @@
 function template(arr) {
   const newArr = arr.map(e => {
-    const turnOverRateAdd = e.f10;
+    const turnOverRateAdd = e.turnOverRateAdd;
     const increaseRate = e.f3;
     const area = e.f13;
     const stockCode = e.f12;
@@ -38,9 +38,8 @@ function template(arr) {
                 ? `<td class="pv2  bt br b--black-20 red">${e.f3}%</td>`
                 : `<td class="pv2  bt br b--black-20 green">${e.f3}%</td>`
             }
-            <td class="pv2  bt br b--black-20 mid-gray">${e.f17}</td>
-            <td class="pv2  bt br b--black-20 mid-gray">${e.f18}</td>
-            <td class="pv2  bt br b--black-20 mid-gray">${e.f8}</td>
+            <td class="pv2  bt br b--black-20 mid-gray">${e.f10}</td>
+            <td class="pv2  bt br b--black-20 mid-gray">${e.f8}%</td>
             ${
               turnOverRateAdd >= 0
                 ? `<td class="pv2 pr3 bt b--black-20 red">${turnOverRateAdd}%</td>`

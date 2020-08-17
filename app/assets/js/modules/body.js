@@ -69,7 +69,9 @@ function fetchGenralData() {
     .get(url)
     .then(response => {
       const stockArr = response.data;
-      const sortedArr = stockArr.sort((a, b) => b.f10 - a.f10);
+      const sortedArr = stockArr.sort(
+        (a, b) => b.turnOverRateAdd - a.turnOverRateAdd,
+      );
       const result = template(sortedArr);
 
       stockBox.innerHTML = result;

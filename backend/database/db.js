@@ -16,7 +16,7 @@ async function freshData() {
     yesterdayData.map(y => {
       if (e.f12 === y.f12) {
         e.f9 = y.f8;
-        e.f10 = (((e.f8 - e.f9) / e.f9) * 100).toFixed(2);
+        e.turnOverRateAdd = (((e.f8 - e.f9) / e.f9) * 100).toFixed(2);
       }
     });
     return e;
