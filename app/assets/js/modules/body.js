@@ -50,7 +50,7 @@ function fetchData() {
       const stockArr = response.data;
       const sortedArr = stockArr
         .filter(e => e.bkName === bk)
-        .sort((a, b) => b.f10 - a.f10);
+        .sort((a, b) => b.turnOverRateAdd - a.turnOverRateAdd);
       const result = template(sortedArr);
 
       stockBox.innerHTML = result;
