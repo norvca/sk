@@ -3,7 +3,15 @@ const moment = require('moment-business-days');
 const yesterDay = getPrevTradingDay(new Date());
 
 function getPrevTradingDay(day) {
-  return moment(day).prevBusinessDay().format().slice(0, 10);
+  const getHours = new Date().getHours();
+  const getPreviousDay = moment(day).prevBusinessDay().format().slice(0, 10);
+  const getDayBefore = moment(day)
+    .prevBusinessDay()
+    .prevBusinessDay()
+    .format()
+    .slice(0, 10);
+
+  return getHours >= 0 && getHours <= 8 ? getDayBefore : getPreviousDay;
 }
 
 const restDay = [
