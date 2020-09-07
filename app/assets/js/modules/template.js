@@ -21,9 +21,10 @@ function template(arr) {
 
             ${
               area == 0
-                ? `<td class="pv1  bt br b--black-20 mid-gray "><a target="_blank" class="no-underline blue" href="https://xueqiu.com/S/SZ${stockCode}">${e.f14}</a></td>`
-                : `<td class="pv1  bt br b--black-20 mid-gray "><a target="_blank" class="no-underline blue" href="https://xueqiu.com/S/SH${stockCode}">${e.f14}</a></td>`
+                ? `<td class="pv1  bt br b--black-20 mid-gray f6"><a target="_blank" class="no-underline blue" href="https://xueqiu.com/S/SZ${stockCode}">${e.f14}<br >${stockCode}<br/></a></td>`
+                : `<td class="pv1  bt br b--black-20 mid-gray f6"><a target="_blank" class="no-underline blue" href="https://xueqiu.com/S/SH${stockCode}">${e.f14}<br >${stockCode}<br/></a></td>`
             }
+
 
             ${
               companyPrice < 200
